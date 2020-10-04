@@ -1,6 +1,6 @@
 ﻿#Created by https://github.com/VladimirKosyuk
 
-#Collects array from all domain servers with network logged information from each one. Output view(*.txt files): Count – string repeat count, "Process ID (may be empty)";"Process name(may be empty)";local=ip:port remote=ip:port. Script progress output - CLI.
+#Collects array from all MS domain servers with network logged information from each one. Output view(*.txt files): Count – string repeat count, "Process ID (may be empty)";"Process name(may be empty)";local=ip:port remote=ip:port. Script progress output - CLI.
 #
 # Build date: 04.10.2020									   
  
