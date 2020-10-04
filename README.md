@@ -1,9 +1,9 @@
 # Network_logger
-Collects array from all domain servers with network logged information from each one
+Collects array from all MS domain servers with network logged information from each one
 
 Описание: 
 
-  1. Собирает список серверов домена;
+  1. Собирает список серверов Windows домена;
   
   2. На каждом из списка через invoke-command запускает логирование по провайдеру Microsoft-Windows-TCPIP, вывод в *.etl в корень С:;
   
