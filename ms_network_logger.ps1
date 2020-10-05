@@ -8,7 +8,7 @@
 
 #vars
 
-#time in seconds to collect raw data from servers. Reccomendded time is 43200 seconds(12h)
+#time in seconds to collect raw data from servers. 
 $Timer_sec = 43200
 #DCs ip address. Optional.
 $DC_srv = ""
