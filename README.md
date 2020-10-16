@@ -1,46 +1,29 @@
 # Network_logger
-Collects array from all MS domain servers with network logged information from each one
 
-Описание: 
+Description:
 
-  1. Собирает список серверов Windows домена;
-  
-  2. На каждом из списка через invoke-command запускает логирование по провайдеру Microsoft-Windows-TCPIP, вывод в *.etl в корень С:;
-  
-  3. Ожидает 12 часов (рекомендую не более 5 минут);
-  
-  4. На каждом из списка через invoke-command останавливает логирование, собирает список запущенных процессов в *.CSV файл в корне С:;
-  
-  5. На каждом из списка через SMB перемещает данные логирования и список процессов на шару;
-  
-  6. Парсинг событий для приведения к итоговому виду: Count – количество повторений, ID процесса(может быть пустым)";"Имя процесса(может быть пустым)";local=ip:порт remote=ip:порт.
+-Check if folder to output parsed data is created, if not – creates it. For smb-share with collected *.etl files – it will not be created via script!
 
-Требования к выполнению:
+-Collects array with DNS names production MS 2012 R2 doman servers 
 
-  1. Запуск от АДМ у\з на всех собираемых серверах;
-  
-  2. Execution policy unrestricted;
-  
-  3. Сервера из списка не ниже 2012 R2;
-  
-  4. Invoke-command с сервера источника на сервера назначения выполняется успешно;
-  
-  5. SMB шара для raw data с серверов должна быть доступна для серверов из списка;
-  
-  6. Все папки для сбора данных должны быть созданы до начала выполнения скрипта(создавать директории он не умеет);
-  
-  7. На каждом из серверов на диске С: должно быть не менее 7 ГБ свободного места.
+-For each one simultaneously via invoke-command starts Microsoft-Windows-TCPIP logging with output to C:\FQDN_Active_connections.csv.etl
 
-Баги:
+-For each one simultaneously via get-NetTCPConnection collects listening connections with output to C:\FQDN_established_connections.csv
 
-  1. Operation cannot be carried out because an object already exists. - возникает на шаге создания сессии логирования;
-  
-  2. No MSFT_NetEventSession objects found with property 'Name' equal to $myFQDN" - если воспроизводится ошибка выше;
-  
-  3. Если у сервера =>2 ip - в папке result появляется пустой файл с выводом. Причина - скрипт не умеет работать с таким;
-  
-  4. Set-NetEventSession -MaxFileSize - увеличение параметра более 6ГБ вызывает ошибку(по крайней мере у меня вызывало);
-  
-  5. Имя процесса может быть неверным, так как список процессов собирается однократно по завершению сбора сетевых сессий;
-  
-  6. Не совсем баг - так как парсер не агрегирует соединения по динамическим портам, вывод читать затруднительно.
+-Steps 3 and 4 proceed until $Timer_sec is over or C: space is running below 1 GB
+
+-For each one of files moves to shares via smb
+
+-Parse each one of collected *.etl files via 1033 event and to output as following: Route = local=ip:port remote=ip:port , PID = number, TimeCreated = date
+
+-Removes *.etl files from share
+
+Bugs:
+
+-Invoke-command for all 64 elements of my array cannot do simultaneously, but half – first step, do\untill ends, then – second half
+
+-Remove *.etl files from share not do for all files. Couple of files holded via system
+
+-For Set-NetEventSession setting -MaxFileSize > 6 GB causes error
+
+-One time error was when do\untill not stopped by conditions
