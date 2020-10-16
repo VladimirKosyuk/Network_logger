@@ -1,5 +1,9 @@
 # Network_logger_v2
 
+Does:
+
+For all prodution MS 2012 R2 servers and above simultaneously collects network established connections(every 10 secodns) and active connections(realtime) to csv files during 12 hours and moves them to SMB-share.
+
 Description:
 
 -Check if folder to output parsed data is created, if not – creates it. For smb-share with collected *.etl files – it will not be created via script!
