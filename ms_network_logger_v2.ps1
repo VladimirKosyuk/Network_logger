@@ -72,7 +72,7 @@ $DC_srv = ""
 #Where to output preparsed data. Need to be accesible from $NetEventTrace_DST. 
 $result_hub = ""
 #Output from servers as raw data files. Need to be created. Need to be smb share. Need to be accesible from all servers, that send raw data.
-$NetEventTrace_DST = "etl"
+$NetEventTrace_DST = ""
 
 
 #check if $result_hub exists, if not - create
