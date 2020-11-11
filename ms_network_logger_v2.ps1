@@ -22,8 +22,8 @@
 
 -Запуск от АДМ у\з на всех собираемых серверах
 -Active Directory module 
--Execution policy unrestricted ( или надо подписать скрипт)
--Сервера из списка не ниже 2012 R2( для серверов ниже нет NetEventSession, но есть <Get-WmiObject -Namespace ROOT\StandardCIMV2 -Class MSFT_NetTCPConnection | Select-Object LocalAddress, LocalPort, RemoteAddress, RemotePort, @{Name = 'Process'; Expression = {(Get-Process -Id ($_.OwningProcess)).name}} | Format-Table>)
+-Execution policy unrestricted (или надо подписать скрипт)
+-Сервера из списка не ниже 2012 R2(для серверов ниже нет NetEventSession)
 -Invoke-command с сервера источника на сервера назначения выполняется успешно
 -SMB шара для raw data с серверов должна быть доступна для серверов из списка
 -На каждом из серверов на диске С: должно быть не менее 10 ГБ свободного места - *.etl файлы имеют ограничение на рост до 6 ГБ, *.csv ограничений не имеют
