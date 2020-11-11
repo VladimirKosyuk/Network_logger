@@ -30,4 +30,4 @@ Bugs:
 
 -For Set-NetEventSession setting -MaxFileSize > 6 GB causes error
 
--One time error was when do\untill not stopped by conditions
+-One time error was when do\untill not stopped according to conditions
