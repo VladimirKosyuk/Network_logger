@@ -1,6 +1,6 @@
 ﻿#Created by https://github.com/VladimirKosyuk
 
-# For all prodution MS 2012 R2 servers and above simultaneously collects TCP established connections(every 10 secodns) and active connections(realtime) to csv files during 12 hours and moves them to SMB-share. Outputs progress to CLI.
+# For all prodution MS 2012 R2 servers and above simultaneously collects established connections(every 10 secodns) and active connections(realtime) to csv files during 12 hours and moves them to SMB-share. Outputs progress to CLI.
 
 # Build date: 16.10.2020
 
