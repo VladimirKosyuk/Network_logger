@@ -1,6 +1,6 @@
 ﻿#Created by https://github.com/VladimirKosyuk
 
-# For Network_logger scirpt parses unique cells by following properties: local ip, local port, remote ip, remote port, pid
+# For each Network_logger output files finds unique local ip, local port, remote ip, remote port, pid
 
 # Build date: 11.11.2020
 
