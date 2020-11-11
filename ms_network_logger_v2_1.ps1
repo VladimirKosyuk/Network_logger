@@ -1,6 +1,6 @@
 ﻿#Created by https://github.com/VladimirKosyuk
 
-# For all prodution MS 2012 R2 servers and above simultaneously collects TCP established connections(every 10 secodns) and active connections(realtime) to csv files during 12 hours and moves them to SMB-share. Outputs progress to CLI.
+# For all prodution MS 2012 R2 servers and above simultaneously collects established connections(every 10 secodns) and active connections(realtime) to csv files during 12 hours and moves them to SMB-share. Outputs progress to CLI.
 
 # Build date: 11.11.2020
 
@@ -14,7 +14,7 @@
 -На всех из списка через get-NetTCPConnection забирает listening соединения, шаг - 10 секунд, вывод в FQDN_established_connections.csv в корень С;
 -Шаги 3 и 4 работают в течении таймера(продолжительность указать в $Timer_sec или если место на диске не станет меньше 1 ГБ;
 -На каждом из списка через SMB перемещает данные логирования в шары .
--Парсинг *.etl файлов по событию 1033, приведение к виду: Route = local=ip:port remote=ip:port , PID = number, TimeCreated = date, вывод в CSV
+-Парсинг *.etl файлов по событию 1033 и 1169, приведение к виду: Route = local=ip:port remote=ip:port , PID = number, TimeCreated = date, вывод в CSV
 -Очистка шары с *.etl файлами
 Требования к внедрению:
 -Запуск от АДМ у\з на всех собираемых серверах
